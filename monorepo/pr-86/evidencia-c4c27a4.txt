@@ -1,0 +1,57 @@
+$ git rev-parse HEAD
+c4c27a413c9ceb2c05a5477ac13e5d2570a180b6
+
+$ git grep -n -E 'usar[A-Z0-9]' -- apps packages
+(exit 1 — sin coincidencias)
+
+$ git grep -n -E 'useSplashActivo|useReducirMovimiento|useSesion' -- apps
+apps/cuentame/src/app/(sesion)/_layout.tsx:7:import { useSesion } from '../../sesion/ProveedorSesion';
+apps/cuentame/src/app/(sesion)/_layout.tsx:14:  const { cargando, activa } = useSesion();
+apps/cuentame/src/app/_layout.tsx:6:import { ProveedorSesion, useSesion } from '../sesion/ProveedorSesion';
+apps/cuentame/src/app/_layout.tsx:15:  const { activa } = useSesion();
+apps/cuentame/src/app/index.tsx:5:import { useSesion } from '../sesion/ProveedorSesion';
+apps/cuentame/src/app/index.tsx:11:  const { cargando, activa } = useSesion();
+apps/cuentame/src/carrusel/PantallaCarrusel.tsx:14:import { useSplashActivo } from '../splash/SplashActivo';
+apps/cuentame/src/carrusel/PantallaCarrusel.tsx:21:function useReducirMovimiento() {
+apps/cuentame/src/carrusel/PantallaCarrusel.tsx:42:  const reducir = useReducirMovimiento();
+apps/cuentame/src/carrusel/PantallaCarrusel.tsx:43:  const splashEncima = useSplashActivo();
+apps/cuentame/src/cuenta/PantallaCuenta.tsx:7:import { useSesion } from '../sesion/ProveedorSesion';
+apps/cuentame/src/cuenta/PantallaCuenta.tsx:122:  const { salir } = useSesion();
+apps/cuentame/src/login/PantallaLogin.tsx:14:import { useSesion } from '../sesion/ProveedorSesion';
+apps/cuentame/src/login/PantallaLogin.tsx:23:  const { entrar } = useSesion();
+apps/cuentame/src/sesion/ProveedorSesion.tsx:54:export function useSesion(): EstadoDeSesion {
+apps/cuentame/src/sesion/ProveedorSesion.tsx:57:    throw new Error('useSesion va dentro de ProveedorSesion');
+apps/cuentame/src/splash/SplashActivo.tsx:14:export function useSplashActivo() {
+
+$ pnpm typecheck
+$ turbo run typecheck --filter=cuentame
+
+   • turbo 2.11.13
+   • Packages in scope: cuentame
+   • Running typecheck in 1 package
+   • Remote caching disabled
+
+cuentame:typecheck: cache miss, executing 01aef32f5e00bed9
+cuentame:typecheck: $ tsc --noEmit
+
+ Tasks:    1 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    1.687s 
+
+EXIT:0
+
+$ pnpm exec turbo run typecheck --filter=cuentame --force
+
+   • turbo 2.11.13
+   • Packages in scope: cuentame
+   • Running typecheck in 1 package
+   • Remote caching disabled
+
+cuentame:typecheck: cache bypass, force executing 01aef32f5e00bed9
+cuentame:typecheck: $ tsc --noEmit
+
+ Tasks:    1 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    1.677s 
+
+EXIT:0
