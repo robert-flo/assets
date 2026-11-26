@@ -1,0 +1,19 @@
+$ git rev-parse HEAD
+51fe46aea3b9c49963b2fc0104f23deb4ef7871b
+
+$ pnpm typecheck
+$ turbo run typecheck --filter=cuentame
+
+   • turbo 2.11.13
+   • Packages in scope: cuentame
+   • Running typecheck in 1 package
+   • Remote caching disabled
+
+cuentame:typecheck: cache miss, executing 5b1495e65d902f9a
+cuentame:typecheck: $ tsc --noEmit
+
+ Tasks:    1 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    2.063s 
+
+EXIT:0
